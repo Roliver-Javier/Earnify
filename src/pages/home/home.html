@@ -1,0 +1,70 @@
+<ion-header class="custom-header">
+	<p>Earnify</p>
+	<div class="header-buttons left-button" >
+		<div class="header-buttons-burger">
+			<ion-icon name="ios-leaf-outline"></ion-icon>
+		</div>
+
+	</div>
+
+	<div class="header-bottom">
+		<ion-grid>
+			<ion-row>
+				<ion-col col-4>
+					<label>RD$ 5,000.00</label><br/>
+					<small>Total earned</small>
+				</ion-col>
+				
+				<ion-col col-4>
+					<label>RD$ 5,000.00</label><br/>
+					<small>Near payment amount</small>
+				</ion-col>
+				
+				<ion-col col-4>
+					<label>25/02/2017</label><br/>
+					<small>Near payment Date</small>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+	
+</ion-header>
+
+<ion-content class="container">
+	<ion-card *ngFor="let group of groups">
+        <ion-card-content>
+	        <ion-list>
+				<ion-item>
+					<ion-avatar item-start>
+				    	<img  [style.background-image]="group.imageGroup" class="avatar-group" />
+				    </ion-avatar>
+				    <h2>{{group.nameGroup}}</h2>
+				    <p>{{group.currencyTotal}} {{group.totalAmount}}</p>
+				</ion-item>
+			</ion-list>
+           	<hr/>
+	        <ion-grid>
+	           	<ion-row>
+		           	<ion-col>
+			        	<label>{{group.participants.length}}</label>
+			        	<small> participants</small>
+			        </ion-col>
+			        <ion-col style="text-align:right;">
+			        	<ion-icon name="md-checkmark" *ngIf="group.status === 'completed'"></ion-icon>
+			        	<ion-icon name="ios-clock-outline" *ngIf="group.status === 'in process'"></ion-icon>
+			        	<small>{{group.status}}</small>
+			        </ion-col>
+		        </ion-row>
+	        </ion-grid>
+        </ion-card-content>
+    </ion-card>
+     
+	<ion-fab right bottom (click)="openMenu()">
+	    <button ion-fab color="danger" class="fab" >
+	    	<ion-icon aria-label="add" name="add"></ion-icon>
+	    </button>
+	    <i class="ios-people"></i>  
+	</ion-fab>
+</ion-content>
+
+

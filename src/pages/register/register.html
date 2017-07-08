@@ -1,0 +1,98 @@
+
+<ion-header>
+  <ion-navbar class="header-content">
+  	<ion-buttons (click)="goToHome()" left>
+      <button ion-button><ion-icon name="md-undo"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-title>
+     New Group 
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+	<ion-content>
+		<form  (ngSubmit)="registerGroupForm()">
+	  <ion-list>
+
+	  	<ion-item (click)="group.imageGroup = '../assets/img/img8.jpg'"
+	  	>
+	  		<ion-label color="primary">Choose Group image:</ion-label>
+	  		<ion-avatar item-start>
+	  			<img src="{{group.imageGroup}}" class="avatar-group"/>
+	  		</ion-avatar>
+	  	</ion-item>
+	  	
+
+	  	<ion-item>
+	    	<ion-label color="primary" stacked>Group name:</ion-label>
+	    	<ion-input 
+		    	type="text" 
+		    	[(ngModel)]="group.nameGroup"  
+		    	name="groupName"
+		    	placeholder="Place your group name" 
+		    	required
+	    	></ion-input>
+	  	</ion-item>
+
+	  	<ion-item>
+	  		 <ion-label color="primary" stacked>Start date:</ion-label>
+	  		<ion-datetime 
+	  			placeholder="Choose when group starts" 
+	  			displayFormat="DD/MM/YYYY"
+	  			name="startDate"
+	  			[(ngModel)]="group.startDate"
+	  			required></ion-datetime>
+	  	</ion-item>
+
+	  	<ion-item>
+	  		<ion-label color="primary" stacked>End date:</ion-label>
+	  		<ion-datetime 
+	  			placeholder="Choose when group ends" 
+	  			displayFormat="DD/MM/YYYY"
+	  			[(ngModel)]="group.endDate"
+	  			name="endDate"
+	  			required></ion-datetime>
+	  	</ion-item>
+	  	<ion-item>
+	  		<ion-label color="primary" stacked>Currency:</ion-label>
+	  		<ion-select 
+	  			placeholder="Choose a currency" 
+	  			[(ngModel)] = "group.currencyTotal" 
+	  			name="currency"
+	  			required>
+	  			<ion-option value="USD">USD</ion-option>
+	  			<ion-option value="RD">RD</ion-option>
+	  			<ion-option value="EUR">EUR</ion-option>
+	  		</ion-select>
+	  	</ion-item>
+	  	<ion-item>
+	  		<ion-label color="primary">Amount goal:</ion-label>  		
+	  		<ion-input 
+	  			type="number" 
+	  			[(ngModel)]="group.totalAmount" 
+	  			placeholder="{{group.currencyTotal}} $ 00"
+	  			required
+	  			name="amountGoal"
+	  			>
+	  		</ion-input>
+	  		.
+	  		<ion-input 
+	  			type="number" 
+	  			name="amountCents"
+	  			[(ngModel)]="group.totalAmountCents" 
+	  			placeholder=".00"
+	  			>
+	  		</ion-input>
+
+	  	</ion-item>
+
+	  </ion-list>
+	  <ion-footer>
+		<button type="submit" ion-button block color="danger">Create group</button>
+	</ion-footer>
+	  </form>
+
+	</ion-content>
+	

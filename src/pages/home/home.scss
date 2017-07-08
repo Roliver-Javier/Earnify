@@ -1,0 +1,93 @@
+page-home {
+	
+  .container{
+    background-color:#ececec;
+  }
+	.custom-header {
+        box-sizing: content-box;
+        display: -webkit-flex;
+        display: flex;
+        height: 200px !important;
+        padding: 0;
+        background:url('../assets/img/img4.jpg') no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        p {
+          font-weight: bold;
+          color: black;
+          display: block;
+          font-size: 14px;
+          margin-top:20px;
+          margin-left:50px;
+        }
+
+        .header-buttons {
+          margin-top: 0 !important;
+          position: absolute;
+          width: 40px;
+        }
+        .left-button {
+          display: table;
+          left: 20px;
+          top:22px;
+            .header-buttons-burger {
+              display: table-cell;
+              vertical-align: middle;
+            }
+            .header-buttons-burger ion-icon {
+                  font-size: 2em;
+                  margin-top: -6px;
+                  margin-left: 4px;
+                  color: gray;
+            }
+        }
+        .header-bottom{
+		    width: 100%;
+		    z-index: 12312312;
+		    position: absolute;
+		    bottom: 0;
+		   
+		    background-color:#5d987a;
+		    opacity:0.9;
+
+		    ion-col{
+		    	color:#fff;
+		    	text-align:center;
+		    	position: relative;
+		    	label{
+		    		font-weight:bold;
+		    		font-size:14px;
+		    	}
+		    	small{
+
+		    	}
+		    }
+	    }
+    }
+
+
+    .avatar-group{
+        background-size: cover;
+        box-sizing: content-box;
+        width:100px;
+        height:100px;
+      }
+
+    .header-group{
+      background-color:white;
+      font-weight:bold;
+    }
+
+
+
+    .group-content{
+    	ion-card{
+    		background-color:#fff;
+    	}
+    	
+    }
+
+
+}
