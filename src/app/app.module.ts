@@ -10,6 +10,8 @@ import { RegisterPage } from '../pages/register/register';
 import { TransactionManager } from '../utils/TransactionManager';
 import { PageManager } from '../utils/PageManager';
 
+import {Contacts} from 'ionic-native';
+
 @NgModule({
   declarations: [
     MyApp,
