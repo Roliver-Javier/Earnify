@@ -32,24 +32,28 @@
 
 <ion-content class="container">
 	<ion-card *ngFor="let group of groups">
-        <ion-card-content>
+        <ion-card-content (click)="openGroup()">
 	        <ion-list>
-				<ion-item>
+				<ion-item class="item-dashboard">
 					<ion-avatar item-start>
-				    	<img  [style.background-image]="group.imageGroup" class="avatar-group" />
+				    	<img  src="{{group.imageGroup}}" class="avatar-group" />
 				    </ion-avatar>
 				    <h2>{{group.nameGroup}}</h2>
 				    <p>{{group.currencyTotal}} {{group.totalAmount}}</p>
+
+
 				</ion-item>
 			</ion-list>
-           	<hr/>
+           	
 	        <ion-grid>
 	           	<ion-row>
-		           	<ion-col>
-			        	<label>{{group.participants.length}}</label>
+		           	<ion-col style="text-align:center;">
+			        	<h2>{{group.participants.length}}</h2>
 			        	<small> participants</small>
 			        </ion-col>
-			        <ion-col style="text-align:right;">
+			    
+			        <ion-col style="text-align:center;">
+				    	<h2>50%</h2>
 			        	<ion-icon name="md-checkmark" *ngIf="group.status === 'completed'"></ion-icon>
 			        	<ion-icon name="ios-clock-outline" *ngIf="group.status === 'in process'"></ion-icon>
 			        	<small>{{group.status}}</small>

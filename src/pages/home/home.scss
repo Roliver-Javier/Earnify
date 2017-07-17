@@ -2,6 +2,37 @@ page-home {
 	
   .container{
     background-color:#ececec;
+
+    .list-ios  .item-block{
+        border-bottom: none;
+        border-top:none;
+    }
+
+    .avanced-porcentage{
+      border:2px solid green;
+      width:30px;
+      height:30px;
+      margin-left:40%;
+      margin-top:-5px;
+      border-radius:50%;
+      padding:9% 0px 0px 2%;
+      h1{
+        position:absolute;
+        width:25px;
+        text-align:center;
+        font-size:9px;
+        font-weight:bold;
+        color:green;
+      }
+    }
+
+    .item-dashboard{
+        h2{
+            width: 100%;
+            word-break: break-all;
+            white-space: normal;
+        }
+    }
   }
 	.custom-header {
         box-sizing: content-box;
@@ -71,8 +102,6 @@ page-home {
     .avatar-group{
         background-size: cover;
         box-sizing: content-box;
-        width:100px;
-        height:100px;
       }
 
     .header-group{

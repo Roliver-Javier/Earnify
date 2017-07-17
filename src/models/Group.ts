@@ -17,6 +17,7 @@ export class Group{
 	private _totalAmount : number;
 	private _currencyTotal: string;
     private _imageGroup: string;
+    private _isAdminParticipant : boolean;
 
 	constructor(){
 		
@@ -29,6 +30,13 @@ export class Group{
 		this._amountPart = this._totalAmount / this._participants.length;
 		this._endDate = endDate;
 	}
+
+    set isAdminParticipant(isAdminParticipant:boolean){
+        this._isAdminParticipant = isAdminParticipant;
+    }
+    get isAdminParticipant(){
+        return this._isAdminParticipant;
+    }
 
     set imageGroup(imageGroup:string){
         this._imageGroup = imageGroup;

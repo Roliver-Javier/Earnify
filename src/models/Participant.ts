@@ -5,12 +5,9 @@ export class Participant{
 	private _name: string;
 	private _email: string;
 	private _amountPartStatus: string;
+    private _phoneNumber: string;
 
-	constructor(object){
-		this._id = object.id;
-		this._name = object.name;
-		this._email = object.email;
-		this._amountPartStatus = object.amountPartStatus;
+	constructor(){
 	}
 
 	get id():string {
@@ -41,6 +38,13 @@ export class Participant{
     }
     set amountPartStatus(amountPartStatus:string) {
         this._amountPartStatus = amountPartStatus;
+    }
+
+    get phoneNumber():string{
+        return this._phoneNumber;
+    }
+    set phoneNumber(phoneNumber:string){
+        this._phoneNumber = phoneNumber;
     }
 
 }

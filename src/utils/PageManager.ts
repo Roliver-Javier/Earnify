@@ -10,19 +10,23 @@ export abstract class PageManager{
 
   	
     goToHome = function(){
-    	this.navCtrl.setRoot(HomePage);
+    	this.navCtrl.push(HomePage);
     }
 
     goBack = function(){
-
+      this.navCtrl.pop();
     }
 
     goFoward = function(){
 
     }
 
-    goPage = function(page:any){
+    goPageDirect = function(page:any){
     	 this.navCtrl.setRoot(page);
+    }
+
+    goPage = function(page:any){
+       this.navCtrl.push(page);
     }
 
 }

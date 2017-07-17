@@ -16,7 +16,7 @@
 		<form  (ngSubmit)="registerGroupForm()">
 	  <ion-list>
 
-	  	<ion-item (click)="group.imageGroup = '../assets/img/img8.jpg'"
+	  	<ion-item (click)="group.imageGroup = 'assets/img/img8.jpg'"
 	  	>
 	  		<ion-label color="primary">Choose Group image:</ion-label>
 	  		<ion-avatar item-start>
@@ -55,6 +55,11 @@
 	  			name="endDate"
 	  			required></ion-datetime>
 	  	</ion-item>
+
+	  	<ion-item>
+		    <ion-label color="primary">Want to participate?</ion-label>
+		    <ion-toggle [(ngModel)]="group.isAdminParticipant" name="isAdminParticipant"></ion-toggle>
+		</ion-item>
 	  	<ion-item>
 	  		<ion-label color="primary" stacked>Currency:</ion-label>
 	  		<ion-select 
@@ -66,6 +71,8 @@
 	  			<ion-option value="RD">RD</ion-option>
 	  			<ion-option value="EUR">EUR</ion-option>
 	  		</ion-select>
+
+
 	  	</ion-item>
 	  	<ion-item>
 	  		<ion-label color="primary">Amount goal:</ion-label>  		
@@ -85,19 +92,13 @@
 	  			placeholder=".00"
 	  			>
 	  		</ion-input>
-
 	  	</ion-item>
 	  	
-			<button (click)="submitForm()" ion-button icon-left block>
-			  <ion-icon name="ios-contacts"></ion-icon>
-			  Add participants
-			</button>
+			
 			<ion-list>
 		    	<ion-item *ngFor="let contact of contactlist">
-		      			
-		    		
 		    		<ion-avatar item-start>
-				    	<img  [style.background-image]="group.imageGroup" class="avatar-group" />
+				    	<img  src="{{group.imageGroup}}" class="avatar-group" />
 				    </ion-avatar>
 				    <h2>{{contact.displayName}}</h2>
 				    <p>{{contact.phoneNumbers[0].value}}</p>
@@ -110,5 +111,12 @@
 
 	</ion-content>
 	<ion-footer>
-		<button type="submit" ion-button block color="danger">Create group</button>
+		<div
+				class="add-participants-btn" 
+				(click)="addParticipant()" 
+				icon-left block>
+			  <ion-icon name="ios-contacts"></ion-icon>
+			  Click here to add participants
+			</div>
+		<button type="submit" (click)="registerGroupForm()" ion-button block color="danger">Create group</button>
 	</ion-footer>

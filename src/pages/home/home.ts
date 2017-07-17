@@ -7,7 +7,7 @@ import { TransactionManager } from '../../utils/TransactionManager';
 import {ActionSheetController,NavController} from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { PageManager } from '../../utils/PageManager';
-
+import { GroupPage } from '../group/group';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +20,8 @@ export class HomePage extends PageManager{
 
   		super(navCtrl);
   		var eventsGroup = new GroupData();
-  		var currentDisplay = new ContactsDataUpdate(eventsGroup),
+  		var currentDisplay = new ContactsDataUpdate(eventsGroup);
+
   		/*Have to call the push notification to get changes automatically and set
   		* set this changes on setChanges method */
 	  	/*	var sessionData = {
@@ -31,20 +32,21 @@ export class HomePage extends PageManager{
 	  			groupBeing: ['#1000033f','#20332345']
 	  		},
 		*/
-	  		contact1 = new Participant({
-			  								id: 'HGHGFGHFGH333w33',
-			  								name: 'Luis Henz',
-			  								email: 'luisHenz@gmail.com',
-			  								amountPartStatus: 'waiting'
-			  							}),
-	  		contact2 = new Participant({
-	  										id: 'KJKHKH867644KH',
-	  										name: 'Cristian Matos',
-	  										email: 'cristianmatos@gmail.com',
-	  										amountPartStatus: 'waiting'
 
-										});
 
+	  	var	contact1 = new Participant();
+	  		contact1.id = 'HGHGFGHFGH333w33';
+			contact1.name = 'Luis Henz';
+			contact1.email = 'luisHenz@gmail.com';
+			contact1.amountPartStatus= 'pending';
+			contact1.phoneNumber = '809-483-1685';
+
+	  	var	contact2 = new Participant();
+	  		contact2.id = 'KJKHKH867644KH';
+	  		contact2.name = 'Cristian Matos';
+	  		contact2.email = 'cristianmatos@gmail.com';
+	  		contact2.amountPartStatus = 'waiting';
+	  		contact2.phoneNumber ='809-223-4433';
 
 		  		
 		/***  SCENERAIO REGISTRANDO GRUPO  **/
@@ -69,7 +71,7 @@ export class HomePage extends PageManager{
 					groupDummy1.waitTurns = participants;
 					groupDummy1.participants =participants;
 					groupDummy1.totalAmount = 50000;
-					groupDummy1.imageGroup =  'url(../assets/img/img3.jpg)';
+					groupDummy1.imageGroup =  'assets/img/img3.jpg';
 					groupDummy1.currentTurn = {};
 					groupDummy1.debtors = participants;
 					groupDummy1.currencyTotal = 'RD $';
@@ -83,7 +85,7 @@ export class HomePage extends PageManager{
 					groupDummy2.waitTurns = participants;
 					groupDummy2.participants = participants;
 					groupDummy2.totalAmount = 50000;
-					groupDummy2.imageGroup = 'url(../assets/img/img5.jpg)';
+					groupDummy2.imageGroup = 'assets/img/img5.jpg';
 					groupDummy2.currentTurn = {};
 					groupDummy2.debtors = participants;
 					groupDummy2.currencyTotal = 'RD $';
@@ -97,7 +99,7 @@ export class HomePage extends PageManager{
 					groupDummy3.waitTurns = participants;
 					groupDummy3.participants = participants;
 					groupDummy3.totalAmount = 50000;
-					groupDummy3.imageGroup = 'url(../assets/img/img8.jpg)';
+					groupDummy3.imageGroup = 'assets/img/img8.jpg';
 					groupDummy3.currentTurn = {};
 					groupDummy3.debtors = participants;
 					groupDummy3.currencyTotal = 'RD $';	
@@ -135,13 +137,17 @@ export class HomePage extends PageManager{
 		        	text: 'Create new group',
 		        	icon: 'ios-people',
 		          	handler: () => {
-		            		this.goPage(RegisterPage);
+		            		this.goPageDirect(RegisterPage);
 		          	}
 		        },
 	        	
 	      	]
     	});
     	actionSheet.present();
+	}
+
+	openGroup = function(){
+		this.goPage(GroupPage);
 	}
 
   	getAllGroups = function():Array<Group>{

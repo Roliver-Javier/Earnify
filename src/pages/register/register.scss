@@ -1,5 +1,11 @@
 page-register {
-
+	.add-participants-btn{
+		border: 1px dashed #20883f;
+		padding:10px;
+		margin:10px;
+		text-align:center;
+		color:#20883f;
+	}
 	.avatar-group{
         background-size: cover;
         box-sizing: content-box;
@@ -13,17 +19,18 @@ page-register {
 		height:200px;
 	}
 		
-	.toolbar-background-md{
+	.toolbar-background-md, .toolbar-background{
 		background-color:#75ab8f;
 
 	}
+	
 	.toolbar-title{
 		color:white;	
 		text-align:center;
 		margin-left:-5%;	
 	}
 
-	.bar-button-md{
+	.bar-button-md, .bar-button{
 		color:white;
 		left:20%;
 	}

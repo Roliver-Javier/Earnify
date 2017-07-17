@@ -4,30 +4,41 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { MyApp } from './app.component';
+import { Earnify } from './app.component';
+
+/* Pages
+*/
 import { HomePage } from '../pages/home/home';
+import { GroupPage } from '../pages/group/group';
 import { RegisterPage } from '../pages/register/register';
+import { RoulettePage } from '../pages/roulette/roulette';
+
+/* Extras*/
 import { TransactionManager } from '../utils/TransactionManager';
 import { PageManager } from '../utils/PageManager';
+
 
 import {Contacts} from 'ionic-native';
 
 @NgModule({
   declarations: [
-    MyApp,
+    Earnify,
     HomePage,
-    RegisterPage
-
+    RegisterPage,
+    GroupPage,
+    RoulettePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(Earnify)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    Earnify,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    GroupPage,
+    RoulettePage
   ],
   providers: [
     StatusBar,
