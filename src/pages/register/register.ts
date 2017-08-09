@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, ToastController,AlertController } from 'ionic-angular';
+import { NavController,ActionSheetController, Platform, ToastController,AlertController } from 'ionic-angular';
 import { GroupData } from '../../patterns/GroupData';
 import { ContactsDataUpdate } from '../../patterns/ContactsDataUpdate';
 import { Participant } from '../../models/Participant';
@@ -9,6 +9,7 @@ import { HomePage } from '../home/home';
 import { PageManager } from '../../utils/PageManager';
 import {Contacts} from 'ionic-native';
 import { RoulettePage } from '../roulette/roulette';
+import { ParticipantPage } from '../participant/participant';
 
 @Component({
   selector: 'page-register',
@@ -22,6 +23,7 @@ export class RegisterPage extends PageManager{
   	constructor(public navCtrl: NavController,
                 public platform: Platform,
                 public toastCtrl: ToastController,
+                public actShtCtr: ActionSheetController,
                 public alertCtrl: AlertController) {
   		super(navCtrl);
   		this._group = new Group();
@@ -30,7 +32,88 @@ export class RegisterPage extends PageManager{
       this._group.isAdminParticipant = false;
   	}
 
+    openContactMenu = function() {
+        var pageParam = {};
+      	let actionSheet = this.actShtCtr.create({
+  	      	title: '',
+  	      	cssClass: 'action-sheets-basic-page',
+  	      	buttons: [
+              {
+  		        	text: 'See all Participants',
+  		        	icon: 'ios-eye-outline',
+  		          	handler: () => {
+                      pageParam = {
+                        'showContact':true,
+                        'grouplist':this.contactlist
+                      };
+  		            		this.goPage(ParticipantPage,pageParam);
+  		          	}
+  		        },
+  		        {
+  		        	text: 'Create new Participant',
+  		        	icon: 'ios-contact',
+  		          	handler: () => {
+                      pageParam = {
+                        'showContact':false,
+                        'grouplist':this.contactlist
+                      };
+  		            		this.goPage(ParticipantPage,pageParam);
+  		          	}
+  		        },
+              {
+  		        	text: 'Add participant from Contacts',
+  		        	icon: 'ios-contacts',
+  		          	handler: () => {
+  		            		this.addParticipant();
+  		          	}
+  		        },
+  	      	]
+      	});
+      	actionSheet.present();
+  	}
+
+
     addParticipant = function() {
+
+    var contact1 = new Participant();
+        contact1.id = 'HGHGFGHFGH333w33';
+        contact1.name = 'Luis Henz';
+        contact1.email = 'luisHenz@gmail.com';
+        contact1.amountPartStatus= 'pending';
+        contact1.phoneNumber = '809-483-1685';
+
+        var contact2 = new Participant();
+            contact2.id = 'HGHGFGHFGH333w33';
+            contact2.name = 'Roliver';
+            contact2.email = 'roliver@gmail.com';
+            contact2.amountPartStatus= 'pending';
+            contact2.phoneNumber = '809-483-1999';
+
+    this.contactlist.push(contact1);
+    this.contactlist.push(contact2);
+      var group  = new Group();
+      group.nameGroup='FaGroupSan';
+    	group.groupId= '123';
+    	group.status= 'in process';
+    	group.dateCreated= '1/7/2017';
+    	//group.nextPaymentDate: string;
+    	group.waitTurns= this.contactlist;
+    	group.participants= this.contactlist;
+    	//group.currentTurn: object;
+    	group.debtors= this.contactlist;
+    	group.amountPart= 3333.33;
+    	group.startDate= '1/2/2017';
+    	group.endDate= '1/3/2017';
+    	group.totalAmount= 10000.00;
+    	group.currencyTotal= 'RD$';
+      group.imageGroup= 'assets/img/img5.jpg';
+      group.isAdminParticipant = true;
+      this.goPage(RoulettePage,group);
+
+
+
+
+    /*
       Contacts.pickContact().then((contacts) => {
         if(typeof contacts.displayName !=='undefined' &&
           typeof contacts.phoneNumbers[0].value !=='undefined'){
@@ -48,6 +131,7 @@ export class RegisterPage extends PageManager{
           toast.present();
         }
       });
+      */
     }
 
 
@@ -55,32 +139,47 @@ export class RegisterPage extends PageManager{
   		return this._group;
   	}
 
+
+    private hasUndefinedFields(fields: Array<any>):boolean{
+        for(var i = 0; i < fields.length;i++){
+            if(typeof fields[i] === 'undefined' || fields[i] <= 0){
+                return true
+            }
+        }
+        return false;
+    }
+
     private validateForm = function():boolean{
-      var returnValue = true, message;
-      console.log(this.group.startDate);
-      if(typeof this.group.nameGroup === 'undefined' ||
-        typeof this.group.currencyTotal === 'undefined'||
-        this.group.totalAmount <= 0 ||
-        typeof this.group.totalAmount === 'undefined'){
+      var contact1 = new Participant();
+          contact1.id = 'HGHGFGHFGH333w33';
+          contact1.name = 'Luis Henz';
+          contact1.email = 'luisHenz@gmail.com';
+          contact1.amountPartStatus= 'pending';
+          contact1.phoneNumber = '809-483-1685';
+
+
+      this.contactlist.push(contact1);
+
+      var returnValue = true, message,
+      fields = [this.group.nameGroup,this.group.currencyTotal,
+                this.group.totalAmount,this.group.totalAmount,
+                this.group.endDate,this.group.startDate];
+
+      if(this.hasUndefinedFields(fields)){
         returnValue = false;
         message = 'Favor ingresar los datos correctamente.';
       }
-      else 
-      if(typeof this.group.endDate !== 'undefined' &&
-         typeof this.group.startDate !== 'undefined'){
-          if(new Date(this.group.endDate) <= new Date(this.group.startDate)){
-
-              returnValue = false;
-              message = 'La fecha final no puede ser menor o igual que la fecha inicial.';
-          }else{
-            returnValue = true;
-          }
+      else if(new Date(this.group.endDate) <= new Date(this.group.startDate)){
+        returnValue = false;
+        message = 'La fecha final no puede ser menor o igual que la fecha inicial.';
       }
-      else     
+      else
       if(this.contactlist.length <=0){
         message = 'Este grupo no posee participantes.';
         returnValue = false;
       }
+
+
       if(!returnValue){
         let toast = this.toastCtrl.create({
             message: message,
@@ -102,17 +201,13 @@ export class RegisterPage extends PageManager{
           text: 'Yes',
           handler: data => {
             var messageError,hasFailed=false;
-            if(this.validateForm()){     
-              this.goPage(RoulettePage);
-            }
-            
-            
+            this.goPage(RoulettePage);
           }
         },
         {
           text: 'No',
           handler: data=>{
-            if(this.validateForm()){     
+            if(this.validateForm()){
               this.group.groupId = '';
               this.group.status = '';
               this.group.nextPaymentDate = '';

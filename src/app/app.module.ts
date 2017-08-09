@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { Earnify } from './app.component';
+import { FormsModule }   from '@angular/forms';
 
 /* Pages
 */
@@ -12,6 +13,7 @@ import { HomePage } from '../pages/home/home';
 import { GroupPage } from '../pages/group/group';
 import { RegisterPage } from '../pages/register/register';
 import { RoulettePage } from '../pages/roulette/roulette';
+import {ParticipantPage} from '../pages/participant/participant';
 
 /* Extras*/
 import { TransactionManager } from '../utils/TransactionManager';
@@ -26,10 +28,12 @@ import {Contacts} from 'ionic-native';
     HomePage,
     RegisterPage,
     GroupPage,
-    RoulettePage
+    RoulettePage,
+    ParticipantPage
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     IonicModule.forRoot(Earnify)
   ],
   bootstrap: [IonicApp],
@@ -38,7 +42,8 @@ import {Contacts} from 'ionic-native';
     HomePage,
     RegisterPage,
     GroupPage,
-    RoulettePage
+    RoulettePage,
+    ParticipantPage
   ],
   providers: [
     StatusBar,

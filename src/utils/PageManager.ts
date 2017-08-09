@@ -25,8 +25,12 @@ export abstract class PageManager{
     	 this.navCtrl.setRoot(page);
     }
 
-    goPage = function(page:any){
-       this.navCtrl.push(page);
+    goPage = function(page:any, param){
+       if(typeof param === 'undefined'){
+         this.navCtrl.push(page);
+       }else{
+          this.navCtrl.push(page, param);
+       }
     }
 
 }

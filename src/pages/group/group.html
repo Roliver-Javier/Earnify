@@ -16,51 +16,24 @@
 <ion-content>
 <div class="group-head">
       <div class="group-avatar-circle">
-          <img src="assets/img/img3.jpg"/>
+          <img src="{{group.imageGroup}}"/>
       </div>
-      <h1>San de la fabrica</h1>
-      <small>in progress</small>
+      <h1>{{group.nameGroup}}</h1>
+      <small>{{group.status}}</small>
 </div>
 
 <div class="container">
     <ion-list>
-          <ion-label color="primary" stacked>Participants</ion-label>
-          <ion-item>
+        <ion-label color="primary" stacked>Participants</ion-label>
+          <ion-item  *ngFor="let participant of group.participants; let i = index">
             <ion-avatar item-start>
-              <h1>1ro</h1>
-              <small>15/05/2017</small>
+              <h1>{{i}}</h1>
+              <small>{{group.nextPaymentDate}}</small>
             </ion-avatar>
-            <h2>Roliver Javier Rodriguez</h2>
-            <p>809-483-1587</p>
+            <h2>{{participant.name}}</h2>
+            <p>{{participant.phoneNumber}}</p>
           </ion-item>
-
-          <ion-item>
-            <ion-avatar item-start>
-              <h1>2do</h1>
-              <small>30/05/2017</small>
-            </ion-avatar>
-            <h2>Roliver Javier Rodriguez</h2>
-            <p>809-483-1587</p>
-          </ion-item>
-
-          <ion-item>
-            <ion-avatar item-start>
-              <h1>3ro</h1>
-              <small>15/06/2017</small>
-            </ion-avatar>
-            <h2>Roliver Javier Rodriguez</h2>
-            <p>809-483-1587</p>
-          </ion-item>
-
-          <ion-item>
-            <ion-avatar item-start>
-              <h1>4to</h1>
-              <small>30/06/2017</small>
-            </ion-avatar>
-            <h2>Roliver Javier Rodriguez</h2>
-            <p>809-483-1587</p>
-          </ion-item>
-        </ion-list>
+  </ion-list>
 
 </div>
 </ion-content>

@@ -6,9 +6,9 @@
     </ion-buttons>
 
     <ion-title>
-     New Group 
+     New Group
     </ion-title>
-    
+
   </ion-navbar>
 </ion-header>
 
@@ -23,23 +23,21 @@
 	  			<img src="{{group.imageGroup}}" class="avatar-group"/>
 	  		</ion-avatar>
 	  	</ion-item>
-	  	
+
 
 	  	<ion-item>
-	    	<ion-label color="primary" stacked>Group name:</ion-label>
-	    	<ion-input 
-		    	type="text" 
-		    	[(ngModel)]="group.nameGroup"  
+	    	<ion-label color="primary" floating>Group name:</ion-label>
+	    	<ion-input
+		    	type="text"
+		    	[(ngModel)]="group.nameGroup"
 		    	name="groupName"
-		    	placeholder="Place your group name" 
 		    	required
 	    	></ion-input>
 	  	</ion-item>
 
 	  	<ion-item>
-	  		 <ion-label color="primary" stacked>Start date:</ion-label>
-	  		<ion-datetime 
-	  			placeholder="Choose when group starts" 
+	  		 <ion-label color="primary" floating>Start date:</ion-label>
+	  		<ion-datetime
 	  			displayFormat="DD/MM/YYYY"
 	  			name="startDate"
 	  			[(ngModel)]="group.startDate"
@@ -47,24 +45,24 @@
 	  	</ion-item>
 
 	  	<ion-item>
-	  		<ion-label color="primary" stacked>End date:</ion-label>
-	  		<ion-datetime 
-	  			placeholder="Choose when group ends" 
+	  		<ion-label color="primary" floating>End date:</ion-label>
+	  		<ion-datetime
 	  			displayFormat="DD/MM/YYYY"
 	  			[(ngModel)]="group.endDate"
 	  			name="endDate"
 	  			required></ion-datetime>
 	  	</ion-item>
 
-	  	<ion-item>
+	  	<ion-item padding>
 		    <ion-label color="primary">Want to participate?</ion-label>
 		    <ion-toggle [(ngModel)]="group.isAdminParticipant" name="isAdminParticipant"></ion-toggle>
-		</ion-item>
-	  	<ion-item>
-	  		<ion-label color="primary" stacked>Currency:</ion-label>
-	  		<ion-select 
-	  			placeholder="Choose a currency" 
-	  			[(ngModel)] = "group.currencyTotal" 
+		  </ion-item>
+
+	  	<ion-item padding>
+	  		<ion-label color="primary">Currency:</ion-label>
+	  		<ion-select
+	  			placeholder="Choose a currency"
+	  			[(ngModel)] = "group.currencyTotal"
 	  			name="currency"
 	  			required>
 	  			<ion-option value="USD">USD</ion-option>
@@ -75,48 +73,35 @@
 
 	  	</ion-item>
 	  	<ion-item>
-	  		<ion-label color="primary">Amount goal:</ion-label>  		
-	  		<ion-input 
-	  			type="number" 
-	  			[(ngModel)]="group.totalAmount" 
+	  		<ion-label color="primary">Amount goal:</ion-label>
+	  		<ion-input
+	  			type="number"
+	  			[(ngModel)]="group.totalAmount"
 	  			placeholder="{{group.currencyTotal}} $ 00"
 	  			required
 	  			name="amountGoal"
 	  			>
 	  		</ion-input>
 	  		.
-	  		<ion-input 
-	  			type="number" 
+	  		<ion-input
+	  			type="number"
 	  			name="amountCents"
-	  			[(ngModel)]="group.totalAmountCents" 
+	  			[(ngModel)]="group.totalAmountCents"
 	  			placeholder=".00"
 	  			>
 	  		</ion-input>
 	  	</ion-item>
-	  	
-			
-			<ion-list>
-		    	<ion-item *ngFor="let contact of contactlist">
-		    		<ion-avatar item-start>
-				    	<img  src="{{group.imageGroup}}" class="avatar-group" />
-				    </ion-avatar>
-				    <h2>{{contact.displayName}}</h2>
-				    <p>{{contact.phoneNumbers[0].value}}</p>
-				  
-		  		</ion-item>
-		  	</ion-list>
 	  </ion-list>
-	  
 	  </form>
 
 	</ion-content>
 	<ion-footer>
 		<div
-				class="add-participants-btn" 
-				(click)="addParticipant()" 
+				class="add-participants-btn"
+				(click)="openContactMenu()"
 				icon-left block>
 			  <ion-icon name="ios-contacts"></ion-icon>
-			  Click here to add participants
+			  Click here to manage participants
 			</div>
 		<button type="submit" (click)="registerGroupForm()" ion-button block color="danger">Create group</button>
 	</ion-footer>

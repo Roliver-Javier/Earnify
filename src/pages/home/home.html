@@ -14,12 +14,12 @@
 					<label>RD$ 5,000.00</label><br/>
 					<small>Total earned</small>
 				</ion-col>
-				
+
 				<ion-col col-4>
 					<label>RD$ 5,000.00</label><br/>
 					<small>Near payment amount</small>
 				</ion-col>
-				
+
 				<ion-col col-4>
 					<label>25/02/2017</label><br/>
 					<small>Near payment Date</small>
@@ -27,12 +27,12 @@
 			</ion-row>
 		</ion-grid>
 	</div>
-	
+
 </ion-header>
 
 <ion-content class="container">
-	<ion-card *ngFor="let group of groups">
-        <ion-card-content (click)="openGroup()">
+	<ion-card *ngFor="let group of groups; let i = index">
+        <ion-card-content (click)="openGroup(this.groups[i])">
 	        <ion-list>
 				<ion-item class="item-dashboard">
 					<ion-avatar item-start>
@@ -44,14 +44,14 @@
 
 				</ion-item>
 			</ion-list>
-           	
+
 	        <ion-grid>
 	           	<ion-row>
 		           	<ion-col style="text-align:center;">
 			        	<h2>{{group.participants.length}}</h2>
 			        	<small> participants</small>
 			        </ion-col>
-			    
+
 			        <ion-col style="text-align:center;">
 				    	<h2>50%</h2>
 			        	<ion-icon name="md-checkmark" *ngIf="group.status === 'completed'"></ion-icon>
@@ -62,13 +62,11 @@
 	        </ion-grid>
         </ion-card-content>
     </ion-card>
-     
+
 	<ion-fab right bottom (click)="openMenu()">
-	    <button ion-fab color="danger" class="fab" >
+	    <button ion-fab color="default" class="fab" >
 	    	<ion-icon aria-label="add" name="add"></ion-icon>
 	    </button>
-	    <i class="ios-people"></i>  
+	    <i class="ios-people"></i>
 	</ion-fab>
 </ion-content>
-
-

@@ -1,0 +1,53 @@
+
+<ion-header>
+  <ion-navbar class="header-content">
+    <ion-title>{{titleDisplay}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content *ngIf="showContactList" padding>
+	<ion-list>
+    <div *ngIf="contactlist.length > 0">
+      <ion-label color="primary" stacked>Participants:</ion-label>
+  		<ion-item *ngFor="let contact of contactlist">
+  			<h2>{{contact.displayName}}</h2>
+  				<p>{{contact.phoneNumbers[0].value}}</p>
+  		</ion-item>
+    </div>
+    <div *ngIf="contactlist.length <=0" padding>
+        <img src="assets/img/whoops.png"/>
+        <h2 class="advice-title">You haven't added participants yet!</h2>
+    </div>
+	</ion-list>
+
+</ion-content>
+
+<ion-content *ngIf="!showContactList" padding>
+  <form class="list form-participant">
+    <ion-item>
+      <ion-label floating>Full Name</ion-label>
+      <ion-input type="text" ngControl="fullname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" ngControl="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Phone Number #1</ion-label>
+      <ion-input type="number" ngControl="phonenumber1"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Phone Number #2</ion-label>
+      <ion-input type="number" ngControl="phonenumber2"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" ngControl="address"></ion-input>
+    </ion-item>
+  </form>
+</ion-content>
+
+<ion-footer *ngIf="!showContactList">
+	<button type="submit"  ion-button block color="default">Create</button>
+</ion-footer>

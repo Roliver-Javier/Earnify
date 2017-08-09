@@ -6,6 +6,8 @@ export class Participant{
 	private _email: string;
 	private _amountPartStatus: string;
     private _phoneNumber: string;
+    private _turnDate: string
+    private _turnNumber: number;
 
 	constructor(){
 	}
@@ -15,6 +17,20 @@ export class Participant{
     }
     set id(id:string) {
         this._id = id;
+    }
+
+    get turnNumber():number {
+        return this._turnNumber;
+    }
+    set turnNumber(turnNumber:number) {
+        this._turnNumber = turnNumber;
+    }
+
+    get turnDate():string {
+        return this._turnDate;
+    }
+    set turnDate(turnDate:string) {
+        this._turnDate = turnDate;
     }
 
 

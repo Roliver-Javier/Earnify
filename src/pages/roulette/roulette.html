@@ -1,15 +1,29 @@
 <ion-header>
   <ion-navbar>
-  
+
 
     <ion-title>
-     Roulette 
+     Roulette
     </ion-title>
-    
+
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-HOLA
+  <small>{{loadingText}}</small>
+  <div class="container">
+      <ion-list>
+          <ion-label color="primary" stacked>Participants</ion-label>
+            <ion-item  *ngFor="let participant of group.participants; let i = index">
+              <ion-avatar item-start>
+                <h1>{{i}}</h1>
+                <small>{{group.nextPaymentDate}}</small>
+              </ion-avatar>
+              <h2>{{participant.name}}</h2>
+              <p>{{participant.phoneNumber}}</p>
+            </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>

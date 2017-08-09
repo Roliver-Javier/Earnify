@@ -41,6 +41,7 @@ export class HomePage extends PageManager{
 			contact1.amountPartStatus= 'pending';
 			contact1.phoneNumber = '809-483-1685';
 
+
 	  	var	contact2 = new Participant();
 	  		contact2.id = 'KJKHKH867644KH';
 	  		contact2.name = 'Cristian Matos';
@@ -63,7 +64,10 @@ export class HomePage extends PageManager{
   	}
   	loadDummyGroups = function(participants){
   		var groupDummy1 = new Group();
-		  			groupDummy1.nameGroup = 'San de la Fabrica';
+  			for(var i=0; i< participants.length; i++){
+  				participants[i].turnNumber = i;
+  			}
+		  			groupDummy1.nameGroup = 'San de la Fab';
 		  			groupDummy1.groupId = '#1000033f';
 					groupDummy1.status = 'in process';
 					groupDummy1.dateCreated = '1/7/2017';
@@ -77,7 +81,7 @@ export class HomePage extends PageManager{
 					groupDummy1.currencyTotal = 'RD $';
 
 				var groupDummy2 = new Group();
-		  			groupDummy2.nameGroup = 'San de la Fabrica';
+		  			groupDummy2.nameGroup = 'San de la brica';
 		  			groupDummy2.groupId = '#1000033f';
 					groupDummy2.status = 'in process';
 					groupDummy2.dateCreated = '1/7/2017';
@@ -146,8 +150,9 @@ export class HomePage extends PageManager{
     	actionSheet.present();
 	}
 
-	openGroup = function(){
-		this.goPage(GroupPage);
+	openGroup = function(group){	
+		console.log(group);
+		this.goPage(GroupPage,group);
 	}
 
   	getAllGroups = function():Array<Group>{
