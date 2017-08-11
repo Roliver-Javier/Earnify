@@ -5,9 +5,9 @@ export class Participant{
 	private _name: string;
 	private _email: string;
 	private _amountPartStatus: string;
-    private _phoneNumber: string;
-    private _turnDate: string
-    private _turnNumber: number;
+  private _phoneNumber: string;
+  private _turnDate: string
+  private _turnNumber: number;
 
 	constructor(){
 	}

@@ -24,7 +24,7 @@ export class GroupPage extends PageManager{
   }
 
   ionViewDidLoad() {
-  	
+
     console.log('ionViewDidLoad GroupPage');
   }
 

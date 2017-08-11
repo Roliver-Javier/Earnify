@@ -18,10 +18,18 @@ import {ParticipantPage} from '../pages/participant/participant';
 /* Extras*/
 import { TransactionManager } from '../utils/TransactionManager';
 import { PageManager } from '../utils/PageManager';
-
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {FirebaseListObservable} from 'angularfire2/database';
 import {Contacts} from 'ionic-native';
-
+export const firebaseConfig = {
+      apiKey: "AIzaSyCJVHll25fGsCXfZGTY-oFewxXVvTd2DKc",
+      authDomain: "earnify-c4d7f.firebaseapp.com",
+      databaseURL: "https://earnify-c4d7f.firebaseio.com",
+      projectId: "earnify-c4d7f",
+      storageBucket: "earnify-c4d7f.appspot.com",
+      messagingSenderId: "861574785619"
+};
 @NgModule({
   declarations: [
     Earnify,
@@ -34,7 +42,9 @@ import {Contacts} from 'ionic-native';
   imports: [
     BrowserModule,
     FormsModule,
-    IonicModule.forRoot(Earnify)
+    IonicModule.forRoot(Earnify),
+    AngularFireModule.initializeApp(firebaseConfig,'Earnify'),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

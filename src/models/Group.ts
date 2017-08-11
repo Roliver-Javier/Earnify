@@ -1,7 +1,7 @@
 
 import {Participant} from '../models/Participant';
+
 export class Group{
-	
 	private _nameGroup:string;
 	private _groupId: string;
 	private _status: string;
@@ -16,14 +16,12 @@ export class Group{
 	private _endDate : string;
 	private _totalAmount : number;
 	private _currencyTotal: string;
-    private _imageGroup: string;
-    private _isAdminParticipant : boolean;
+  private _imageGroup: string;
+  private _isAdminParticipant : boolean;
 
 	constructor(){
-		
 	}
 
-    
 
 	startGroup = function(endDate:string) {
 		this._startDate = new Date().toLocaleDateString();
@@ -95,7 +93,7 @@ export class Group{
     set waitTurns(waitTurns:Array<Participant>) {
         this._waitTurns = waitTurns;
     }
-	
+
     get participants():Array<Participant> {
         return this._participants;
     }
@@ -146,8 +144,8 @@ export class Group{
         this._totalAmount = totalAmount;
     }
 
- 
- 
+
+
 
 
 
