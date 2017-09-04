@@ -14,6 +14,7 @@ import { GroupPage } from '../pages/group/group';
 import { RegisterPage } from '../pages/register/register';
 import { RoulettePage } from '../pages/roulette/roulette';
 import {ParticipantPage} from '../pages/participant/participant';
+import {GraphicsPage} from '../pages/graphics/graphics';
 
 /* Extras*/
 import { TransactionManager } from '../utils/TransactionManager';
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     RegisterPage,
     GroupPage,
     RoulettePage,
-    ParticipantPage
+    ParticipantPage,
+    GraphicsPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ export const firebaseConfig = {
     RegisterPage,
     GroupPage,
     RoulettePage,
-    ParticipantPage
+    ParticipantPage,
+    GraphicsPage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,5 @@
 page-home {
-	
+
   .container{
     background-color:#ececec;
 
@@ -9,21 +9,18 @@ page-home {
     }
 
     .avanced-porcentage{
-      border:2px solid green;
-      width:30px;
-      height:30px;
-      margin-left:40%;
-      margin-top:-5px;
-      border-radius:50%;
-      padding:9% 0px 0px 2%;
-      h1{
-        position:absolute;
-        width:25px;
-        text-align:center;
-        font-size:9px;
-        font-weight:bold;
-        color:green;
-      }
+			border: 3px dashed #b1de81;
+	    background-color: #F6FAF1;
+	    margin-top: -15px;
+	    padding:20px 10px 20px 10px;
+	    border-radius: 50%;
+	    float: right;
+			h2{
+				font-size: 20px;
+    		font-weight: 400;
+    		color: #96c95f;
+    		line-height: 10px;
+			}
     }
 
     .item-dashboard{
@@ -79,7 +76,7 @@ page-home {
 		    z-index: 12312312;
 		    position: absolute;
 		    bottom: 0;
-		   
+
 		    background-color:#5d987a;
 		    opacity:0.9;
 
@@ -115,7 +112,7 @@ page-home {
     	ion-card{
     		background-color:#fff;
     	}
-    	
+
     }
 
 

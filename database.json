@@ -1,0 +1,99 @@
+{
+  "groups" : [ {
+    "amountPart" : 200,
+    "currencyTotal" : "RD$",
+    "currentTurn" : 0,
+    "dateCreated" : "1/2/2017",
+    "debtors" : [ {
+      "amountPartStatus" : "pending",
+      "email" : "roliverjavier@gmail.com",
+      "id" : "123ABC",
+      "name" : "roliver javier",
+      "phoneNumber" : "8292171998",
+      "turnDate" : "1/2/2017",
+      "turnNumber" : 1
+    }, {
+      "amountPartStatus" : "pending",
+      "email" : "angela@gmail.com",
+      "id" : "ABC123",
+      "name" : "Angela Ramirez",
+      "phoneNumber" : "829111998",
+      "turnDate" : "5/2/2017",
+      "turnNumber" : 2
+    } ],
+    "endDate" : "1/5/2017",
+    "imageGroup" : "assets/img/img3.jpg",
+    "isAdminParticipant" : true,
+    "name" : "San Banco BHD",
+    "nextPaymentDate" : "10/2/2017",
+    "participants" : [ {
+      "amountPartStatus" : "pending",
+      "email" : "roliverjavier@gmail.com",
+      "id" : "123ABC",
+      "name" : "roliver javier",
+      "phoneNumber" : "8292171998",
+      "turnDate" : "1/2/2017",
+      "turnNumber" : 1
+    }, {
+      "amountPartStatus" : "pending",
+      "email" : "angela@gmail.com",
+      "id" : "ABC123",
+      "name" : "Angela Ramirez",
+      "phoneNumber" : "829111998",
+      "turnDate" : "5/2/2017",
+      "turnNumber" : 2
+    } ],
+    "startDate" : "1/2/2017",
+    "status" : "asd",
+    "totalAmount" : 2000,
+    "waitTurns" : ""
+  }, {
+    "amountPart" : 200,
+    "currencyTotal" : "RD$",
+    "currentTurn" : 0,
+    "dateCreated" : "1/2/2017",
+    "debtors" : [ {
+      "amountPartStatus" : "pending",
+      "email" : "roliverjavier@gmail.com",
+      "id" : "123ABC",
+      "name" : "roliver javier",
+      "phoneNumber" : "8292171998",
+      "turnDate" : "1/2/2017",
+      "turnNumber" : 1
+    }, {
+      "amountPartStatus" : "pending",
+      "email" : "angela@gmail.com",
+      "id" : "ABC123",
+      "name" : "Angela Ramirez",
+      "phoneNumber" : "829111998",
+      "turnDate" : "5/2/2017",
+      "turnNumber" : 2
+    } ],
+    "endDate" : "1/5/2017",
+    "imageGroup" : "assets/img/img3.jpg",
+    "isAdminParticipant" : true,
+    "name" : "San Fabrica Humano",
+    "nextPaymentDate" : "10/2/2017",
+    "participants" : [ {
+      "amountPartStatus" : "pending",
+      "email" : "roliverjavier@gmail.com",
+      "id" : "123ABC",
+      "name" : "roliver javier",
+      "phoneNumber" : "8292171998",
+      "turnDate" : "1/2/2017",
+      "turnNumber" : 1
+    }, {
+      "amountPartStatus" : "pending",
+      "email" : "angela@gmail.com",
+      "id" : "ABC123",
+      "name" : "Angela Ramirez",
+      "phoneNumber" : "829111998",
+      "turnDate" : "5/2/2017",
+      "turnNumber" : 2
+    } ],
+    "startDate" : "1/2/2017",
+    "status" : "asd",
+    "totalAmount" : 2000,
+    "waitTurns" : ""
+  } ]
+}

@@ -5,19 +5,28 @@ export class Participant{
 	private _name: string;
 	private _email: string;
 	private _amountPartStatus: string;
-  private _phoneNumber: string;
+  private _phoneNumber1: string;
+	private _phoneNumber2: string;
   private _turnDate: string
   private _turnNumber: number;
+	private _address: string;
 
 	constructor(){
 	}
 
-	get id():string {
+		get id():string {
         return this._id;
     }
     set id(id:string) {
         this._id = id;
     }
+
+		get address():string {
+	        return this._address;
+	    }
+	  set address(address:string) {
+	       this._address = address;
+	  }
 
     get turnNumber():number {
         return this._turnNumber;
@@ -56,11 +65,17 @@ export class Participant{
         this._amountPartStatus = amountPartStatus;
     }
 
-    get phoneNumber():string{
-        return this._phoneNumber;
+    get phoneNumber1():string{
+        return this._phoneNumber1;
     }
-    set phoneNumber(phoneNumber:string){
-        this._phoneNumber = phoneNumber;
+    set phoneNumber1(phoneNumber:string){
+        this._phoneNumber1 = phoneNumber;
+    }
+		get phoneNumber2():string{
+        return this._phoneNumber2;
+    }
+    set phoneNumber2(phoneNumber:string){
+        this._phoneNumber2 = phoneNumber;
     }
 
 }

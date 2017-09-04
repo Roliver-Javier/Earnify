@@ -1,0 +1,54 @@
+<!--
+  Generated template for the GraphicsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar class="header-content">
+    <ion-title>Groups icon</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 col-sm>
+        <div>
+          <div class="container" (click)="setImageGroup('/assets/img/default-san.jpg',$event)">
+            <img src="/assets/img/default-san.jpg">
+          </div>
+        </div>
+
+
+      </ion-col>
+      <ion-col col-4 col-sm>
+        <div>
+          <div class="container" (click)="setImageGroup('/assets/img/img3.jpg',$event)">
+            <img src="/assets/img/img3.jpg">
+          </div>
+        </div>
+
+      </ion-col>
+      <ion-col col-4 col-sm>
+        <div>
+          <div class="container" (click)="setImageGroup('/assets/img/img8.jpg',$event)">
+            <img src="/assets/img/img8.jpg">
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-4 col-sm>
+        <div>
+          <div class="container" (click)="setImageGroup('/assets/img/img4.jpg',$event)">
+            <img src="/assets/img/img4.jpg">
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+		<button type="submit" (click)="registerImageGroup()" ion-button block color="default">Save</button>
+	</ion-footer>
+</ion-content>

@@ -11,8 +11,8 @@
 		<ion-grid>
 			<ion-row>
 				<ion-col col-4>
-					<label>RD$ 5,000.00</label><br/>
-					<small>Total earned</small>
+					<label>RD$ {{getTotalExpected()}}</label><br/>
+					<small>Total Expected</small>
 				</ion-col>
 
 				<ion-col col-4>
@@ -31,7 +31,7 @@
 </ion-header>
 
 <ion-content class="container">
-	<ion-card *ngFor="let group of groups; let i = index">
+	<ion-card *ngFor="let group of getAllGroups(); let i = index">
         <ion-card-content (click)="openGroup(this.groups[i])">
 	        <ion-list>
 				<ion-item class="item-dashboard">
@@ -52,11 +52,12 @@
 			        	<small> participants</small>
 			        </ion-col>
 
-			        <ion-col style="text-align:center;">
-				    	<h2>50%</h2>
-			        	<ion-icon name="md-checkmark" *ngIf="group.status === 'completed'"></ion-icon>
-			        	<ion-icon name="ios-clock-outline" *ngIf="group.status === 'in process'"></ion-icon>
-			        	<small>{{group.status}}</small>
+			        <ion-col  style="text-align:center;">
+								<div class="avanced-porcentage">
+						    	<h2>50%</h2>
+					        	<ion-icon name="md-checkmark" *ngIf="group.status === 'completed'"></ion-icon>
+					        	<ion-icon name="ios-clock-outline" *ngIf="group.status === 'in process'"></ion-icon>
+								</div>
 			        </ion-col>
 		        </ion-row>
 	        </ion-grid>

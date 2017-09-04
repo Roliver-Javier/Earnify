@@ -1,4 +1,6 @@
 import {Group} from '../models/Group';
+import {User} from '../models/User';
+import {Participant} from '../models/Participant';
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
 
 export class TransactionManager{
@@ -6,21 +8,50 @@ export class TransactionManager{
 	  today : any;
   	currentGroup : object;
 		data : FirebaseListObservable<any>;
+
+		userAuthFromGoogle : User;
+
+
   	constructor(public af: AngularFireDatabase){
   		this.today = new Date().toLocaleDateString();
+			this.signIn();
+			this.data = this.af.list('/groups');
 
   	}
+
+		generateHashGroup = function(name):string{
+				return name+'-'+'1312374738';
+		}
+
+		signIn= function(){
+			this.userAuthFromGoogle = new User();
+			this.userAuthFromGoogle.id = '123ABC';
+			this.userAuthFromGoogle.name = 'Roliver Javier Rodriguez';
+			this.userAuthFromGoogle.email ='roliverjavier@gmail.com';
+			this.userAuthFromGoogle.phoneNumber = '8292171998';
+		}
+
 		setCurrentGroup = function(currentGroup):void{
 			this.currentGroup = currentGroup;
 		}
 
-		findAllGroups = function(): Array<Group>{
+
+		isUserAParticipant = function(participants: Array<Participant>): boolean{
+				participants.forEach(values=>{
+						if(values.id === this.userAuthFromGoogle.id){
+							return true;
+						}
+				});
+				return false;
+		}
+
+
+		findUserGroups = function(): Array<Group>{
 			var groupArr = new Array<Group>();
-			this.data = this.af.list('/groups');
-
-
 			this.data.forEach(values=>{
 				values.forEach(item=>{
+					if((item.isAdminParticipant && item.idAdmin === this.userAuthFromGoogle.id) ||
+						 this.isUserAParticipant(item.participants)){
 						var group = new Group();
 								group.nameGroup=item.name;
 								group.status=item.status;
@@ -37,7 +68,9 @@ export class TransactionManager{
 								group.currencyTotal=item.currencyTotal;
 								group.imageGroup=item.imageGroup;
 								group.isAdminParticipant=item.isAdminParticipant;
+
 						groupArr.push(group);
+					}
 				});
 			});
 			return groupArr;

@@ -1,16 +1,30 @@
 page-register {
-	.add-participants-btn{
-		border: 1px dashed #20883f;
-		padding:10px;
-		margin:10px;
-		text-align:center;
-		color:#20883f;
+	padding:10px;
+
+	.participants-btn{
+    text-align: center;
+    color: #7C7C7C;
+    font-size: 12px;
+    margin: 5px auto;
+
+		.group-avatar{
+			border-radius:50%;
+			width:20%;
+	  }
+
+		ion-icon{
+			font-size:40px;
+		}
+		p{
+			font-size:15px;
+			margin-top:5px;
+			color:#488aff;
+		}
+
 	}
-	.avatar-group{
-        background-size: cover;
-        box-sizing: content-box;
-      }
-      
+
+
+
 	.btn-image-upload{
 		background-color:green !important;
 		margin-top:200px;
@@ -18,16 +32,15 @@ page-register {
 		width:200px;
 		height:200px;
 	}
-		
+
 	.toolbar-background-md, .toolbar-background{
 		background-color:#75ab8f;
-
 	}
-	
+
 	.toolbar-title{
-		color:white;	
+		color:white;
 		text-align:center;
-		margin-left:-5%;	
+		margin-left:-5%;
 	}
 
 	.bar-button-md, .bar-button{
@@ -35,5 +48,5 @@ page-register {
 		left:20%;
 	}
 
-	
+
 }

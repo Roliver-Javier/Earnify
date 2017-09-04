@@ -1,0 +1,29 @@
+page-graphics {
+  .toolbar-background-md, .toolbar-background{
+		background-color:#75ab8f;
+	}
+
+	.toolbar-title{
+		color:white;
+	}
+
+	.bar-button-md, .bar-button{
+		color:white;
+	}
+
+  ion-grid{
+    ion-row{
+      ion-col{
+        background-color:#F4F5F5;
+        border:1px solid white;
+        .container{
+          margin:10px;
+          height:70px;
+          img{
+            border-radius:50%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -15,15 +15,18 @@
 	<ion-content>
 		<form  (ngSubmit)="registerGroupForm()">
 	  <ion-list>
+      <ion-item class="participants-btn"
+           (click)="openGraphicsGroup()"
+      >
+      <div *ngIf="group.imageGroup.length <= 0">
+        <ion-icon name="ios-image-outline" ></ion-icon>
+      </div>
+      <div *ngIf="group.imageGroup.length > 0">
+         <img src="{{group.imageGroup}}" class="group-avatar">
+      </div>
 
-	  	<ion-item (click)="group.imageGroup = 'assets/img/img8.jpg'"
-	  	>
-	  		<ion-label color="primary">Choose Group image:</ion-label>
-	  		<ion-avatar item-start>
-	  			<img src="{{group.imageGroup}}" class="avatar-group"/>
-	  		</ion-avatar>
-	  	</ion-item>
-
+      <p>Select Image Group</p>
+    </ion-item>
 
 	  	<ion-item>
 	    	<ion-label color="primary" floating>Group name:</ion-label>
@@ -61,7 +64,6 @@
 	  	<ion-item padding>
 	  		<ion-label color="primary">Currency:</ion-label>
 	  		<ion-select
-	  			placeholder="Choose a currency"
 	  			[(ngModel)] = "group.currencyTotal"
 	  			name="currency"
 	  			required>
@@ -91,17 +93,12 @@
 	  			>
 	  		</ion-input>
 	  	</ion-item>
-	  </ion-list>
+
+
+    </ion-list>
 	  </form>
 
 	</ion-content>
 	<ion-footer>
-		<div
-				class="add-participants-btn"
-				(click)="openContactMenu()"
-				icon-left block>
-			  <ion-icon name="ios-contacts"></ion-icon>
-			  Click here to manage participants
-			</div>
-		<button type="submit" (click)="registerGroupForm()" ion-button block color="danger">Create group</button>
+		<button type="submit" (click)="registerGroupForm()" ion-button block color="default">Create group</button>
 	</ion-footer>
