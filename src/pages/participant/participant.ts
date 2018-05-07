@@ -13,7 +13,6 @@ import { Group } from '../../models/Group';
 })
 export class ParticipantPage extends PageManager{
 	private showContacts : boolean;
-	private contactlist: any;
   private titleDisplay: string;
   participant : Participant;
   group: Group;
@@ -23,10 +22,11 @@ export class ParticipantPage extends PageManager{
 	  	super(nav);
       this.titleDisplay = 'New participant';
 	  	this.showContacts = navParams.data.showContacts;
+      this.group = new Group();
       this.group = navParams.data.currentGroup;
       this.participant = new Participant();
+      console.log(this.group);
 	  	if(this.showContacts){
-	  		this.contactlist = navParams.data.grouplist;
         this.titleDisplay = 'Group participants';
 	  	}
 	}
@@ -40,6 +40,7 @@ export class ParticipantPage extends PageManager{
     this.participant.id = this.group.groupId+'-'+this.generateHashParticipant();
     this.group.participants.push(this.participant);
     this.group.debtors.push(this.participant);
+    this.group.waitTurns.push(this.participant);
     this.nav.pop();
 
   }

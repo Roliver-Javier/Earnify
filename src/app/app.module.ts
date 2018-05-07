@@ -23,6 +23,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {FirebaseListObservable} from 'angularfire2/database';
 import {Contacts} from 'ionic-native';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { DatePicker } from '@ionic-native/date-picker';
+import { BrMaskerModule } from 'brmasker-ionic-3';
+
 export const firebaseConfig = {
       apiKey: "AIzaSyCJVHll25fGsCXfZGTY-oFewxXVvTd2DKc",
       authDomain: "earnify-c4d7f.firebaseapp.com",
@@ -46,7 +50,8 @@ export const firebaseConfig = {
     FormsModule,
     IonicModule.forRoot(Earnify),
     AngularFireModule.initializeApp(firebaseConfig,'Earnify'),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    BrMaskerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,6 +66,8 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    EmailComposer,
+    DatePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -8,14 +8,14 @@
 
 <ion-content *ngIf="showContacts" padding>
 	<ion-list>
-    <div *ngIf="contactlist.length > 0">
+    <div class="content-contacts" *ngIf="group.participants.length > 0">
       <ion-label color="primary" stacked>Participants:</ion-label>
-  		<ion-item *ngFor="let contact of contactlist">
-  			<h2>{{contact.displayName}}</h2>
-  				<p>{{contact.phoneNumbers[0].value}}</p>
+  		<ion-item  *ngFor="let contact of group.participants">
+  			<h2>{{contact.name}}</h2>
+  				<p>{{contact.phoneNumber1}}</p>
   		</ion-item>
     </div>
-    <div *ngIf="contactlist.length <=0" padding>
+    <div *ngIf="group.participants.length <=0" padding>
         <img src="assets/img/whoops.jpg"/>
         <h2 class="advice-title">You haven't added participants yet!</h2>
     </div>
@@ -46,6 +46,7 @@
       <ion-input type="text" name="address" [(ngModel)]="participant.address"></ion-input>
     </ion-item>
   </form>
+  <small class="note"><b>Note:</b> Each participant will be notify to their email with the code of this group when you save !</small>
 </ion-content>
 
 <ion-footer *ngIf="!showContacts">

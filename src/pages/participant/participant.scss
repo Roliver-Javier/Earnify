@@ -1,9 +1,27 @@
 page-participant {
+
+	.toolbar-background-md, .toolbar-background{
+		background-color:#488aff;
+	}
+
+	.toolbar-title{
+		color:white;
+	}
+
+	.bar-button-md, .bar-button{
+		color:white;
+		background-color:#488aff;
+	}
+
 	ion-content{
 		background-color:#f7f7f7 !important;
 		margin:0 auto;
 		padding:0;
 		text-align:center;
+
+		.content-contacts{
+			margin-top:10px;
+		}
 		img{
 			margin-top:25%;
 		}
@@ -11,16 +29,12 @@ page-participant {
 				color:gray;
 				font-size:16px;
 		}
+		.note{
+			top:15px;
+			position:relative;
+		}
 	}
-	.toolbar-background-md{
-		background-color:#75ab8f;
-	}
-	.toolbar-title{
-		color:white;
-	}
-	.bar-button-md{
-		color:white;
-	}
+	
 
 
 }

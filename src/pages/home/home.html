@@ -31,43 +31,45 @@
 </ion-header>
 
 <ion-content class="container">
-	<ion-card *ngFor="let group of getAllGroups(); let i = index">
-        <ion-card-content (click)="openGroup(this.groups[i])">
-	        <ion-list>
-				<ion-item class="item-dashboard">
-					<ion-avatar item-start>
-				    	<img  src="{{group.imageGroup}}" class="avatar-group" />
-				    </ion-avatar>
-				    <h2>{{group.nameGroup}}</h2>
-				    <p>{{group.currencyTotal}} {{group.totalAmount}}</p>
+	<div class="cards group-card" 
+		 *ngFor="let group of getAllGroups(); let i = index"
+		 (click)="openGroup(this.groups[i])">
+		 
+				<div class="image">
+					<img  src="{{group.imageGroup}}" height="80px" width="100%" />
+				</div>
+				<div class="detail">
+						<ion-label color="primary">Group:</ion-label>
+						<div class="detail-group">
+							<ion-col>
+								<span class="title">{{group.nameGroup}}</span>
+							</ion-col>
+							<ion-col>
+								<span class="subtitle">{{group.currencyTotal}}$ {{group.totalAmount}}</span>
+							</ion-col>
+						</div>
+							<ion-row>
+					           	<ion-col style="text-align:center;">
+						        	<label>10</label><br/>
+						        	<small> participants</small>
+						        </ion-col>
+						        <ion-col  style="text-align:center;">
+									<div class="avanced-porcentage">
+									    <h2>50%</h2>
+									</div>
+						        </ion-col>
+										<!-- validar si el currentTurn del grupo es igual al turno del participante en el grupo -->
+						        
+		        			</ion-row>
+					
+				</div>
+			</div>
 
-
-				</ion-item>
-			</ion-list>
-
-	        <ion-grid>
-	           	<ion-row>
-		           	<ion-col style="text-align:center;">
-			        	<h2>{{group.participants.length}}</h2>
-			        	<small> participants</small>
-			        </ion-col>
-
-			        <ion-col  style="text-align:center;">
-								<div class="avanced-porcentage">
-						    	<h2>50%</h2>
-					        	<ion-icon name="md-checkmark" *ngIf="group.status === 'completed'"></ion-icon>
-					        	<ion-icon name="ios-clock-outline" *ngIf="group.status === 'in process'"></ion-icon>
-								</div>
-			        </ion-col>
-		        </ion-row>
-	        </ion-grid>
-        </ion-card-content>
-    </ion-card>
-
-	<ion-fab right bottom (click)="openMenu()">
-	    <button ion-fab color="default" class="fab" >
-	    	<ion-icon aria-label="add" name="add"></ion-icon>
-	    </button>
-	    <i class="ios-people"></i>
-	</ion-fab>
+	<ion-fab right bottom  (click)="openMenu()">
+    <button ion-fab mini color="dark"><ion-icon name="arrow-dropup"></ion-icon></button>
+    <!--<ion-fab-list side="top">
+      <button (click)="goToRegisterPage()" ion-fab><ion-icon name="ios-add-circle"></ion-icon></button>
+      <button (click)="showSearchModal()" ion-fab><ion-icon name="ios-search"></ion-icon></button>
+    </ion-fab-list>-->
+  </ion-fab>
 </ion-content>

@@ -1,7 +1,52 @@
+.action-sheet-md .action-sheet-container{
+    background-color:#404854 !important;
+    
+
+    .action-sheet-button{
+      color:white !important;
+    }
+}
+
 page-home {
+  padding:10px !important;
+  background-color:#ececec;
 
   .container{
+
     background-color:#ececec;
+    padding:7% !important;
+    position:relative;
+
+    .cards{
+      margin:10px 3% 6% 3%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      background-color:white;
+    }
+
+    .group-card{
+      .image{
+        height:80px;
+      }
+
+      .detail{
+        padding:0 15px 20px 25px;
+        background-color:white;
+        width:95%;
+
+        .detail-group{
+          margin-top:-8px;
+          margin-bottom:10px;
+        }
+
+        .title{
+          font-weight:bold;
+          font-size:14px;
+        }
+        .subtitle{
+          float:right;
+        }
+      }
+    }
 
     .list-ios  .item-block{
         border-bottom: none;
@@ -11,15 +56,19 @@ page-home {
     .avanced-porcentage{
 			border: 3px dashed #b1de81;
 	    background-color: #F6FAF1;
-	    margin-top: -15px;
-	    padding:20px 10px 20px 10px;
-	    border-radius: 50%;
+	    margin:-10px auto;
+	    border-radius: 75%;
 	    float: right;
+      width:40%;
+      height:50px;
+
 			h2{
-				font-size: 20px;
+				font-size: 17px;
     		font-weight: 400;
     		color: #96c95f;
     		line-height: 10px;
+        text-align:center;
+        position:relative;
 			}
     }
 
@@ -95,7 +144,9 @@ page-home {
 	    }
     }
 
-
+    ion-fab[right]{
+      right:0px;
+    }
     .avatar-group{
         background-size: cover;
         box-sizing: content-box;
@@ -114,6 +165,7 @@ page-home {
     	}
 
     }
+
 
 
 }

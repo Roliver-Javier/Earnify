@@ -1,15 +1,19 @@
 page-group {
-	.toolbar-background-md{
-		background-color:#75ab8f;
 
+	/* HEADER */
+	.toolbar-background-md, .toolbar-background{
+		background-color:#488aff;
 	}
+
 	.toolbar-title{
-		color:white;		
+		color:white;
 	}
 
-	.bar-button-md{
+	.bar-button-md, .bar-button{
 		color:white;
-	}	
+		background-color:#488aff;
+	}
+
 	.avatar-group{
         background-size: cover;
         box-sizing: content-box;

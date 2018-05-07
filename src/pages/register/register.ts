@@ -12,32 +12,68 @@ import { RoulettePage } from '../roulette/roulette';
 import { ParticipantPage } from '../participant/participant';
 import { GraphicsPage } from '../graphics/graphics';
 import {AngularFireDatabase,FirebaseListObservable} from 'angularfire2/database';
-
+import { EmailComposer } from '@ionic-native/email-composer';
+import { DatePicker } from '@ionic-native/date-picker';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
 })
 export class RegisterPage extends PageManager{
-	private group:Group;
-	private contactlist: any;
+	private group:Group = new Group();
+	private contactlist: any = [];
   private transactionManager: TransactionManager;
+  private youAreIn:boolean = false;
+   currencies: any = [{name:'RD'},{name:'USD'},{name:'EUR'}];
 
   	constructor(public navCtrl: NavController,
                 public platform: Platform,
                 public toastCtrl: ToastController,
                 public af: AngularFireDatabase,
                 public actShtCtr: ActionSheetController,
-                public alertCtrl: AlertController) {
+                public alertCtrl: AlertController,
+                public emailComposer:EmailComposer,
+                public datePicker: DatePicker) {
+
 
   		super(navCtrl);
-  		this.group = new Group();
+  		this.transactionManager = new TransactionManager(af);
+      this.group.waitTurns = [];
+      this.group.debtors = [];
+      this.group.participants = [];
   		this.group.imageGroup = '';
-      this.contactlist = [];
       this.group.isAdminParticipant = false;
-      this.transactionManager = new TransactionManager(af);
+  
+      
+     }
 
-  	}
+    public getCurrencies:any = function(){
+        return this.currencies;
+    }
+    sendEmail = function(){
+      var message;
+      this.emailComposer.isAvailable().then((available) =>{
+          if(available) {
+            let email = {
+							to: 'roliverjavier@gmail.com',
+							subject: 'Probando',
+							body:'Esto es una prueba',
+							isHtml:true
+						};
+						this.emailComposer.open(email);
+            message = 'paso por email';
+          }
+      }).catch((ex) => {
+            message=ex+'';
+      });
+      let toast = this.toastCtrl.create({
+          message: message,
+          duration:10000,
+          position: 'top'
+      });
+      toast.present();
+    }
 
     openGraphicsGroup = function(){
       this.goPage(GraphicsPage,this.group);
@@ -57,7 +93,6 @@ export class RegisterPage extends PageManager{
   		          	handler: () => {
                       pageParam = {
                         'showContacts':true,
-                        'grouplist':this.contactlist,
                         'currentGroup':this.group
                       };
   		            		this.goPage(ParticipantPage,pageParam);
@@ -69,7 +104,6 @@ export class RegisterPage extends PageManager{
   		          	handler: () => {
                       pageParam = {
                         'showContact':false,
-                        'grouplist':this.contactlist,
                         'currentGroup':this.group
                       };
   		            		this.goPage(ParticipantPage,pageParam);
@@ -86,13 +120,47 @@ export class RegisterPage extends PageManager{
   		        	text: 'Save Group',
   		        	icon: 'ios-contacts',
   		          	handler: () => {
-  		            		this.addParticipant();
+                    var result, message;
+                    if(this.group.participants.length > 0){
+                          var grouptitle = this.group.nameGroup;
+                          grouptitle = grouptitle.replace(/ /g, '');
+                          this.group.groupId = this.transactionManager.generateHashGroup(grouptitle);
+                          result = this.transactionManager.createGroup(this.group);
+                          message = (result)? "The group has been created!" : "Something goes wrong creating the group!";
+                    }else{
+                        message = "There's no participants on this group, please add them!";
+                    }
+
+                    let toast = this.toastCtrl.create({
+                      message: message,
+                      duration: 3000,
+                      position:'top'
+                    });
+                    toast.present();
+                    this.goPageDirect(HomePage);
   		          	}
   		        },
   	      	]
       	});
       	actionSheet.present();
   	}
+
+
+
+    testGroupCreation = function(){
+        this.group.nameGroup='FaGroupSan';
+        this.group.groupId= '123';
+        this.group.status= 'in process';
+        this.group.dateCreated= '1/7/2017';
+        this.group.amountPart= 3333.33;
+        this.group.startDate= '1/2/2017';
+        this.group.endDate= '1/3/2017';
+        this.group.totalAmount= 10000.00;
+        this.group.currencyTotal= 'RD$';
+        this.group.imageGroup= 'assets/img/img5.jpg';
+        this.group.isAdminParticipant = true;
+    }
+
 
     addParticipant = function() {
         var contact1 = new Participant();
@@ -133,22 +201,54 @@ export class RegisterPage extends PageManager{
     }
 
     registerGroupForm = function() {
+      this.testGroupCreation();
       if(this.validateForm()){
-          this.group.groupId = '';
+          var userId = this.transactionManager.user_singed.id;
+
           this.group.status = '';
           this.group.nextPaymentDate = '';
-          this.group.waitTurns = this.contactlist;
           this.group.currentTurn = {};
-          this.group.debtors = this.contactlist;
+          this.group.idAdmin = userId;
           this.group.dateCreated = new Date().toLocaleDateString();
-          this.group.participants = this.contactlist;
           this.group.amountPart = 0;
+
+          if(this.group.isAdminParticipant && !this.youAreIn){
+            var participant = new Participant();
+                participant.id = userId;
+                participant.name = this.transactionManager.user_singed.name;
+                participant.email =  this.transactionManager.user_singed.email;
+                participant.phoneNumber1 =  this.transactionManager.user_singed.phoneNumber;
+
+            this.group.participants.unshift(participant);
+            this.group.debtors.unshift(participant);
+            this.group.waitTurns.unshift(participant);
+            this.youAreIn = true;
+          }else{
+            if(!this.group.isAdminParticipant){
+              if(this.group.participants.length > 0){
+              if(this.group.participants[0].id === userId){
+                  this.group.participants.shift();
+                  this.youAreIn = false;
+                }
+              }
+            }
+          }
 
           this.openCreateMenu();
 
       }
     }
 
+    showDatePicker = function(period){
+      this.datePicker.show({
+        date: new Date(),
+        mode: 'date',
+        androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+      }).then(
+        date => period === 'start' ? this.group.startDate = date : this.group.endDate = date,
+        err => console.log('Error occurred while getting date: ', err)
+      );
+    }
     /*
       Contacts.pickContact().then((contacts) => {
         if(typeof contacts.displayName !=='undefined' &&

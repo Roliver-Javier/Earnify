@@ -27,13 +27,12 @@ export class GraphicsPage {
       if(!this.imageMark){
         this.imageMark = true;
         this.imageSelected = $event.target.attributes[0].nodeValue;
-        $event.target.attributes[0].nodeValue = '/assets/img/mark.png';
+        $event.target.attributes[0].nodeValue = 'assets/img/mark.png';
       }
   }
 
   registerImageGroup = function(){
       this.group.imageGroup = this.imageSelected;
-      console.log(this.group);
       this.navCtrl.pop();
   }
 

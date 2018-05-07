@@ -18,6 +18,7 @@ export class Group{
 	private _currencyTotal: string;
   private _imageGroup: string;
   private _isAdminParticipant : boolean;
+	private _idAdmin : string;
 
 	constructor(){
 	}
@@ -137,14 +138,19 @@ export class Group{
         this._endDate = endDate;
     }
 
- 	get totalAmount():number {
+ 	 get totalAmount():number {
         return this._totalAmount;
     }
     set totalAmount(totalAmount:number) {
         this._totalAmount = totalAmount;
     }
 
-
+		get idAdmin():string {
+        return this._idAdmin;
+    }
+    set idAdmin(idAdmin:string) {
+        this._idAdmin = idAdmin;
+    }
 
 
 

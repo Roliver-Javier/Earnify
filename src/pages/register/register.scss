@@ -1,6 +1,144 @@
 page-register {
 	padding:10px;
+	background-color:#e7ece9;
 
+
+	/* HEADER */
+	.toolbar-background-md, .toolbar-background{
+		background-color:#488aff;
+	}
+
+	.toolbar-title{
+		color:white;
+	}
+
+	.bar-button-md, .bar-button{
+		color:white;
+		left:20%;
+		background-color:#488aff;
+	}
+
+
+	.scroll-content{
+		background-color:#e7ece9;
+	}
+	
+	ion-content{
+		background-color:#e7ece9;
+		form{
+			background-color:#e7ece9;
+			padding:7px 7% 7 % 7%;
+		}
+		
+
+		.card{
+			margin:5% 0 5% 0;
+			padding: 5px 5px 5px 5px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			background-color:white;
+		}
+
+		.basic-info-card{
+			padding-bottom:3px;
+			.image{
+				height:80px;
+			}
+
+			.detail{
+				background-color:white;
+				margin:5%;
+
+				.title{
+					font-weight:bold;
+					font-size:16px;
+				}
+
+				.detail-info{
+					.detail-image{
+						width:25%;
+						margin:0 auto;
+						text-align:center;
+						padding:8px;
+					
+						ion-icon{
+							font-size:40px;
+						}
+					
+						.group-avatar{
+							border:1px dashed #e7ece9;
+							padding:10px;
+						}
+						p{
+							font-size:12px;
+							margin-top:5px;
+						}
+					}
+
+					.name{
+						background: rgba(230, 221, 221, 0.5);
+						padding:1px 10px 21px 10px;
+						
+						ion-label{
+							font-size:14px;
+						}
+						ion-input{
+							background-color:white;
+							color:gray;
+							font-size:12px;
+						}
+					}
+				}
+				
+			}
+		}
+
+		.schedules-card{
+			padding-bottom:3px;
+			.image{
+				height:80px;
+			}
+
+			.detail{
+				background-color:white;
+				margin:5%;
+
+				.title{
+					font-weight:bold;
+					font-size:16px;
+				}
+				.dates-picker{
+					margin-top:10px;
+				}
+			}
+		}
+
+		.money-info-card{
+			padding-bottom:3px;
+			.image{
+				height:80px;
+				
+			}
+
+			.detail{
+				
+				background-color:white;
+				margin:5%;
+
+				.title{
+					font-weight:bold;
+					font-size:16px;
+				}
+				ion-label{
+					color:#000;
+				}
+				.amount-goal{
+					text-align:right;
+				}
+			}
+		}
+	}
+/*
+	
 	.participants-btn{
     text-align: center;
     color: #7C7C7C;
@@ -23,30 +161,5 @@ page-register {
 
 	}
 
-
-
-	.btn-image-upload{
-		background-color:green !important;
-		margin-top:200px;
-		border:1px solid black;
-		width:200px;
-		height:200px;
-	}
-
-	.toolbar-background-md, .toolbar-background{
-		background-color:#75ab8f;
-	}
-
-	.toolbar-title{
-		color:white;
-		text-align:center;
-		margin-left:-5%;
-	}
-
-	.bar-button-md, .bar-button{
-		color:white;
-		left:20%;
-	}
-
-
+*/
 }
